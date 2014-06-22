@@ -1,0 +1,14 @@
+<h1><%=resourcePluralCap%></h1>
+<ul>
+
+    <li ng-repeat="<%=id%> in <%=resourcePlural%>">
+        
+        <div>
+            <p ng-repeat="(key, val) in <%=id%>.originalElement">{{key}} : {{val}}</p>
+        </div>
+        <a href="" ui-sref="<%=resourcePlural%>.edit({ id: <%=id%>.id })">Edit</a>
+        <a href="" ng-click="remove(<%=id%>)">Delete</a>
+    </li>
+</ul>
+<div ng-show="<%=resourcePlural%>.length === 0">Looks like you haven't added any <%=resourcePlural%> yet?</div>
+<a ng-hide="adding" ui-sref="<%=resourcePlural%>.add">Add A New <%=resourceCap%></a>

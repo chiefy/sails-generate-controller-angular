@@ -1,0 +1,41 @@
+{
+  "name": "sails-generate-controller-angular",
+  "version": "0.0.1",
+  "description": "Generator for creating AngularJS controllers in SailsJS",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chiefy/sails-generate-controller-angular"
+  },
+  "keywords": [
+    "angular",
+    "sails",
+    "controller",
+    "generator",
+    "crud"
+  ],
+  "author": "Christopher 'chief' Najewicz <chief@beefdisciple.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chiefy/sails-generate-controller-angular/issues"
+  },
+  "dependencies": {
+    "lodash": ">=2.4.x",
+    "sails-generate-controller": "~0.10.0",
+    "merge-defaults": "~0.2.1",
+    "pluralize": "0.0.10",
+    "underscore.string": "~2.3.3"
+  },
+  "devDependencies": {
+    "sails-generate": "*"
+  },
+  "sailsGenerator": {
+    "type": "controller",
+    "behavior": "overrides `sails generate controller`",
+    "sailsVersion": "~0.10.0"
+  },
+  "homepage": "https://github.com/chiefy/sails-generate-controller-angular"
+}

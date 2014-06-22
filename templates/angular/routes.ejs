@@ -1,0 +1,44 @@
+(function(ng) {
+    
+    'use strict';
+
+    ng.module('<%= appName %>')
+        .config(function($stateProvider, $urlRouterProvider) {
+
+            $urlRouterProvider
+                .when('/<%=resourcePlural%>', '/<%=resourcePlural%>/list');
+
+            $stateProvider
+                .state('<%=resourcePlural%>', {
+                    abstract: true,
+                    url: '/<%=resourcePlural%>',
+                    controller: '<%=resourceCap%>Ctrl',
+                    template: '<div ui-view></div>',
+                    resolve: {
+                        <%=resourcePluralCap%>: function <%=resourcePlural%>ListResolve(Restangular) {
+                            return Restangular.all('<%=resourcePlural%>').getList();
+                        }
+                    },
+                })
+                .state('<%=resourcePlural%>.list', {
+                    url: '/list',
+                    templateUrl: 'app/<%=id%>/<%=id%>-list.html'
+                })
+                .state('<%=resourcePlural%>.add', {
+                    url: '/add',
+                    templateUrl: 'app/<%=id%>/<%=id%>-add-edit.html'
+                })
+                .state('<%=resourcePlural%>.info', {
+                    url: '/info/:id',
+                    controller: 'Single<%=resourceCap%>Ctrl',
+                    templateUrl: 'app/<%=id%>/<%=id%>-info.html'
+                })
+                .state('<%=resourcePlural%>.edit', {
+                    url: '/edit/:id',
+                    controller: 'Single<%=resourceCap%>Ctrl',
+                    templateUrl: 'app/<%=id%>/<%=id%>-add-edit.html'
+                });
+        });
+})(
+    window.angular
+);

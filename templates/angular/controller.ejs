@@ -1,0 +1,47 @@
+/* global console */
+(function(ng, _) {
+
+    'use strict';
+
+    ng.module('<%= appName %>')
+        .controller('<%= resourceCap %>Ctrl', <%= resourceCap %>Ctrl)
+        .controller('Single<%= resourceCap %>Ctrl', Single<%= resourceCap %>Ctrl);
+
+    function <%=resourceCap%>Ctrl($scope, $state, <%= resourcePluralCap %>, SailsResourceService) {
+        var resourceService = new SailsResourceService('<%=resourcePlural%>'.toLowerCase());
+        
+        $scope.<%= resourcePlural %> = <%= resourcePluralCap %>;
+        $scope.<%= id %> = {};
+     
+        $scope.remove = function remove(<%=id%>) {
+            <%=id%> = <%=id%> || $scope.<%=id%>;
+            if (window.confirm('Are you sure you want to delete this <%=id%>?')) {
+                return resourceService.remove(<%=id%>, $scope.<%= resourcePlural %>);
+            }
+        };
+
+        $scope.save = function save(<%=id%>) {
+            <%=id%> = <%=id%> || $scope.<%=id%>;
+            return resourceService.save(<%=id%>, $scope.<%= resourcePlural %>)
+                .then(function() {
+                    $state.go('^.list');
+                }, function(err) {
+                    console.error('An error occured: ' + err);
+                });
+        };
+    }
+
+    function Single<%=resourceCap%>Ctrl($scope, $stateParams, <%= resourcePluralCap %>) {
+        // coerce string -> int
+        $stateParams.id = _.parseInt($stateParams.id);
+        if (!_.isNaN($stateParams.id)) {
+            $scope.<%=id%> = _.find(<%=resourcePluralCap%>, {
+                id: $stateParams.id
+            });
+        }
+    }
+
+})(
+    window.angular,
+    window._
+);
