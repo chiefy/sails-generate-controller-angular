@@ -2,7 +2,7 @@
     
     'use strict';
 
-    ng.module('<%= appName %>')
+    ng.module('<%=appName%>')
         .config(function($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider
@@ -15,6 +15,9 @@
                     controller: '<%=resourceCap%>Ctrl',
                     template: '<div ui-view></div>',
                     resolve: {
+                        <%=resourceCap%>Definition : function get<%=resourceCap%>Definition (SailsResourceDefinitions) {
+                            return SailsResourceDefinitions.get('<%=resourcePlural%>');
+                        },
                         <%=resourcePluralCap%>: function <%=resourcePlural%>ListResolve(Restangular) {
                             return Restangular.all('<%=resourcePlural%>').getList();
                         }

@@ -1,10 +1,8 @@
 <h1><%=resourcePluralCap%></h1>
 <ul>
-
     <li ng-repeat="<%=id%> in <%=resourcePlural%>">
-        
         <div>
-            <p ng-repeat="(key, val) in <%=id%>.originalElement">{{key}} : {{val}}</p>
+            <p ng-repeat="(key, val) in model_def">{{key}} : {{<%=id%>[key]}}</p>
         </div>
         <a href="" ui-sref="<%=resourcePlural%>.edit({ id: <%=id%>.id })">Edit</a>
         <a href="" ng-click="remove(<%=id%>)">Delete</a>

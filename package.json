@@ -1,7 +1,7 @@
 {
   "name": "sails-generate-controller-angular",
   "version": "0.0.1",
-  "description": "Generator for creating AngularJS controllers in SailsJS",
+  "description": "Generator for creating angular controllers in sails",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

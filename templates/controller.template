@@ -16,6 +16,11 @@
 
 module.exports = {
 	<%- actionFns %>
+    <% if(actionFns.length > 0) { %>,<% } %>
+    definition: function(req, res) {
+        res.json(<%= resourceCap %>.definition);
+    }
+
 };
 <% } else if (lang === 'coffee') { %> # <%= entity %>
  #

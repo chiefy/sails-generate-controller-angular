@@ -1,9 +1,9 @@
-<h1>Add / Edit <%= id %></h1>
-<form name="new_<%= id %>_form">
-    <div ng-repeat="(attr_name, attr_value) in <%= id %>.originalElement">
+<h1>Add / Edit <%=id%></h1>
+<form name="new_<%=id%>_form">
+    <div ng-repeat="(attr_name, attr_value) in model_def">
         <label for="{{attr_name}}">{{attr_name}}</label>
         <input type="text" ng-model="<%=id%>[attr_name]" name="{{attr_name}}" />
     </div>
-    <button ng-click="save(<%= id %>)">Save <%=id%></button>
-    <button ui-sref="<%= resourcePlural %>.list">Cancel</button>
+    <button ng-click="save(<%=id%>)">Save <%=id%></button>
+    <button ui-sref="<%=resourcePlural%>.list">Cancel</button>
 </form>
